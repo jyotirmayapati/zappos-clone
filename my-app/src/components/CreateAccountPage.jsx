@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
-import "../styles/CreateAccount.css"; // Assuming you will create a CSS file for this
+import { useNavigate } from "react-router-dom";
+import "../styles/CreateAccount.css";
 import axios from "axios";
 
 const CreateAccountPage = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,6 +39,9 @@ const CreateAccountPage = () => {
       setSuccessMessage(response.data.message);
       setErrorMessage("");
 
+      // Store the JWT token (for example, in localStorage)
+      localStorage.setItem("token", response.data.token);
+
       // Redirect to home page after a short delay
       setTimeout(() => {
         navigate("/"); // Redirect to home page
@@ -63,7 +66,7 @@ const CreateAccountPage = () => {
           className="create-account-logo"
         />
         <h2 className="create-account-title">Create account</h2>
-        
+
         {successMessage && <p className="success-message">{successMessage}</p>}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
@@ -79,8 +82,7 @@ const CreateAccountPage = () => {
             onChange={handleChange}
             required
           />
-          
-          {/* Email Field */}
+
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -92,8 +94,7 @@ const CreateAccountPage = () => {
             onChange={handleChange}
             required
           />
-          
-          {/* Password Field */}
+
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -108,8 +109,7 @@ const CreateAccountPage = () => {
           <p className="password-hint">
             <i className="password-info-icon">i</i> Passwords must be at least 6 characters.
           </p>
-          
-          {/* Re-enter Password */}
+
           <label htmlFor="confirmPassword">Re-enter password</label>
           <input
             type="password"
@@ -121,26 +121,22 @@ const CreateAccountPage = () => {
             onChange={handleChange}
             required
           />
-          
-          {/* Submit Button */}
+
           <button type="submit" className="create-account-submit-btn">
             Create your Zappos account
           </button>
-          
-          {/* Help Section */}
+
           <p className="help-text">
             Need additional help? Don’t worry! You can reach us via phone, text, or live chat.
             See <a href="#">here</a> for contact details.
           </p>
-          
-          {/* Sign-in Link */}
+
           <p className="sign-in-link">
-            Already have an account? <a href="#">Sign in ›</a>
+            Already have an account? <a href="/signin">Sign in ›</a>
           </p>
         </form>
       </div>
-      
-      {/* Footer */}
+
       <footer className="create-account-footer">
         <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a> | <a href="#">Customer Service</a>
       </footer>
