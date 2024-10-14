@@ -1,191 +1,102 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import styles from '../styles/Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faShoppingBag, faSearch, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faSearch, faUserCircle, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import SignInPopup from './SignInPopup'; // Updated to use SignInPopup
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const menuRef = useRef(null);
+
+  // Toggle menu visibility
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
   };
 
-  const handleNavigation = (link) => {
-    console.log(`${link} button clicked!`);
+  // Toggle search bar visibility
+  const toggleSearch = () => {
+    setIsSearchOpen((prev) => !prev);
   };
+
+  // Toggle login/signup popup
+  const handleUserIconClick = () => {
+    setIsPopupOpen(true); // Open popup
+  };
+
+  // Close popup
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  // Close menu if clicked outside
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    } else {
+      document.removeEventListener('click', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   return (
-    <nav style={styles.nav}>
-      {/* Top Row: Logo, Search Bar, and Icons */}
-      <div style={styles.topRow}>
-        <div style={styles.logoContainer}>
-          <img
-            src="https://m.media-amazon.com/images/G/01/Zappos/25th-birthday-logo/Zappos-25-Years-Logo-Site.svg"
-            alt="Zappos Logo"
-            style={styles.logo}
-          />
+    <div className={styles.navbar}>
+      {/* Top Row: Logo and Icons */}
+      <div className={styles.topRow}>
+        {/* Logo */}
+        <div className={styles.logoContainer}>
+          <img src="https://m.media-amazon.com/images/G/01/Zappos/25th-birthday-logo/Zappos-25-Years-Logo-Site.svg" alt="Zappos Logo" className={styles.logo} />
         </div>
 
         {/* Search Bar */}
-        <div style={styles.searchContainer}>
-          <input
-            type="text"
-            placeholder="Search for shoes, clothes, etc."
-            style={styles.searchInput}
-          />
-          <button style={styles.searchButton}>
+        <div className={`${styles.searchContainer} ${isSearchOpen ? styles.searchOpen : ''}`}>
+          <input type="text" placeholder="Search for shoes, clothes, etc." className={styles.searchInput} />
+          <button className={styles.searchButton}>
             <FontAwesomeIcon icon={faSearch} />
-            Search
           </button>
         </div>
 
-        <div style={styles.iconsContainer}>
-          <FontAwesomeIcon icon={faUserCircle} style={styles.icon} />
-          <FontAwesomeIcon icon={faShoppingBag} style={styles.icon} />
-
-          {/* Hamburger Icon for Small Screen */}
-          <FontAwesomeIcon
-            icon={isMenuOpen ? faTimes : faBars}
-            style={styles.hamburgerIcon}
-            onClick={toggleMenu}
-          />
+        {/* Icons */}
+        <div className={styles.iconsContainer}>
+          <FontAwesomeIcon icon={faSearch} className={`${styles.icon} fa-search`} onClick={toggleSearch} />
+          <FontAwesomeIcon icon={faUserCircle} className={styles.icon} onClick={handleUserIconClick} />
+          <FontAwesomeIcon icon={faShoppingBag} className={styles.icon} />
+          <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} className={styles.hamburgerIcon} onClick={toggleMenu} />
         </div>
       </div>
 
-      {/* Second Row: Navigation Links */}
-      <div style={styles.navLinks}>
+      {/* Links for Larger Screens */}
+      <div className={styles.navLinks}>
         {['New', 'Women', 'Men', 'Kids', 'Collections', 'Brands', 'Sale', 'Gifts'].map((link, index) => (
-          <button key={index} style={styles.navLink} onClick={() => handleNavigation(link)}>
-            {link}
-          </button>
+          <a key={index} href="/" className={styles.navLink}>{link}</a>
         ))}
       </div>
 
-      {/* Mobile Side Menu */}
+      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div style={styles.mobileMenu}>
-          {['New', 'Women', 'Men', 'Kids', 'Collections', 'Brands', 'Sale', 'Gifts', 'Help & Support'].map(
-            (item, index) => (
-              <button key={index} style={styles.menuItem} onClick={() => handleNavigation(item)}>
-                {item}
-              </button>
-            )
-          )}
+        <div className={styles.mobileMenu} ref={menuRef}>
+          {['New', 'Women', 'Men', 'Kids', 'Collections', 'Brands', 'Sale', 'Gifts'].map((link, index) => (
+            <a key={index} href="/" className={styles.menuItem}>{link}</a>
+          ))}
         </div>
       )}
-    </nav>
-  );
-};
 
-const styles = {
-  nav: {
-    display: 'flex',
-    flexDirection: 'column', 
-    padding: '10px 20px',
-    borderBottom: '1px solid #ddd',
-    backgroundColor: '#fff',
-    position: 'relative',
-  },
-  topRow: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  logoContainer: {
-    flex: '1',
-  },
-  logo: {
-    width: '100px',
-  },
-  searchContainer: {
-    flex: '2', 
-    display: 'flex',
-    // alignItems: 'center',
-  },
-  searchInput: {
-    flex: '1',
-    padding: '10px', 
-    borderRadius: '20px 0 0 20px',
-    border: '1px solid #ddd',
-    outline: 'none',
-    fontSize: '14px',
-  },
-  searchButton: {
-    padding: '10px 12px',
-    border: '1px solid #ddd',
-    borderRadius: '0 20px 20px 0',
-    backgroundColor: '#fff',
-    cursor: 'pointer',
-    fontSize: '14px',
-  },
-  iconsContainer: {
-    flex: '1',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  icon: {
-    fontSize: '24px',
-    margin: '0 10px',
-    cursor: 'pointer',
-  },
-  hamburgerIcon: {
-    fontSize: '24px',
-    margin: '0 10px',
-    cursor: 'pointer',
-    display: 'none', 
-  },
-  navLinks: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    marginTop: '10px', 
-  },
-  navLink: {
-    margin: '0 10px',
-    padding: '8px 12px',
-    textDecoration: 'none',
-    background: 'none',
-    border: 'none',
-    color: '#000',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    fontSize: '16px',
-  },
-  mobileMenu: {
-    position: 'fixed',
-    top: '0',
-    right: '0',
-    height: '100vh',
-    width: '250px',
-    backgroundColor: '#fff',
-    padding: '20px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-    display: 'flex',
-    flexDirection: 'column',
-    zIndex: '1000',
-    borderLeft: '1px solid #ddd',
-  },
-  menuItem: {
-    padding: '15px 0',
-    background: 'none',
-    border: 'none',
-    textDecoration: 'none',
-    color: '#000',
-    fontWeight: 'bold',
-    borderBottom: '1px solid #ddd',
-    cursor: 'pointer',
-    fontSize: '16px',
-    textAlign: 'left',
-    width: '100%',
-  },
-  '@media (max-width: 768px)': {
-    hamburgerIcon: {
-      display: 'block',
-    },
-    mobileMenu: {
-      display: 'flex', 
-    },
-  },
+      {/* Popup for Sign-in */}
+      {isPopupOpen && (
+        <SignInPopup onClose={handleClosePopup} />
+      )}
+    </div>
+  );
 };
 
 export default Navbar;

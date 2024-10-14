@@ -1,0 +1,134 @@
+/* Overall container */
+.create-account-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Form box */
+  .create-account-box {
+    width: 320px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .create-account-logo {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  /* Title */
+  .create-account-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Input fields */
+  .create-account-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .create-account-form label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .create-account-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .password-hint {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .password-info-icon {
+    font-style: normal;
+    background-color: #ddd;
+    padding: 0 4px;
+    border-radius: 50%;
+  }
+  
+  /* Submit Button */
+  .create-account-submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #0073e6;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .create-account-submit-btn:hover {
+    background-color: #005bb5;
+  }
+  
+  /* Help text and Sign-in link */
+  .help-text, .sign-in-link {
+    font-size: 12px;
+    margin-top: 15px;
+    text-align: left;
+  }
+  
+  .help-text a, .sign-in-link a {
+    color: #0073e6;
+    text-decoration: none;
+  }
+  
+  .help-text a:hover, .sign-in-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer */
+  .create-account-footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888;
+  }
+  
+  .create-account-footer a {
+    color: #0073e6;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+  
+  .create-account-footer a:hover {
+    text-decoration: underline;
+  }
+  .success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: opacity 0.5s;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: opacity 0.5s;
+  }

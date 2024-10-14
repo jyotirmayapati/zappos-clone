@@ -17,9 +17,8 @@ const ShoeCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px; // Add padding for other cards
-  border: 1px solid #e6e6e6;
-  background-color: #fff;
+  ${'' /* padding: 20px;  */}
+  ${'' /* background-color: #fff; */}
   transition: box-shadow 0.3s ease;
   box-sizing: border-box;
 

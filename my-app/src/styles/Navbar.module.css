@@ -1,0 +1,203 @@
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  position: relative;
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.logoContainer {
+  flex: 1;
+}
+
+.logo {
+  width: 100px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  flex: 2;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.searchContainer.searchOpen {
+  display: flex;
+  width: 100%;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.searchButton {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 0 20px 20px 0;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.iconsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.icon {
+  font-size: 24px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.hamburgerIcon {
+  font-size: 24px;
+  margin: 0 10px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Nav Links for larger screens */
+.navLinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.navLink {
+  margin: 0 10px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #0073e6; /* Adjust hover color */
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: absolute; 
+  top: 0;
+  right: 0;
+  width: 250px; 
+  height: 100vh; 
+  background-color: white; 
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuItem {
+  padding: 15px 0;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+.menuItem:hover {
+  background-color: #f5f5f5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .hamburgerIcon {
+    display: block;
+  }
+
+  .searchContainer {
+    display: none;
+  }
+
+  .searchContainer.searchOpen {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .iconsContainer .icon.fa-search {
+    display: none;
+  }
+}
+
+/* Pop-up Styles */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it sits above other content */
+}
+
+.popupContainer {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 400px; /* Adjust width as needed */
+}
+
+.closePopup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.popupTitle {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.signupButton {
+  margin-top: 10px;
+  background-color: #0073e6; /* Adjust color */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.signupButton:hover {
+  background-color: #005bb5;
+}

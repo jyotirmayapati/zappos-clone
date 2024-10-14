@@ -1,0 +1,151 @@
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .signin-header {
+    margin-bottom: 20px;
+  }
+  
+  .zappos-logo {
+    max-width: 200px;
+  }
+  
+  .signin-box {
+    width: 350px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .signin-box h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .forgot-password {
+    font-size: 12px;
+    color: #0073e6;
+    display: inline-block;
+    margin-top: 8px;
+  }
+  
+  .signin-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #004a70;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .stay-signed-in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  
+  .details-link {
+    color: #0073e6;
+    cursor: pointer;
+  }
+  
+  .new-to-zappos {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .new-to-zappos span {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .create-account-btn {
+    padding: 10px;
+    border: 1px solid #004a70;
+    background-color: transparent;
+    color: #004a70;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .create-account-btn:hover {
+    background-color: #004a70;
+    color: white;
+  }
+  
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  
+  .footer ul li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  .footer ul li a {
+    color: #0073e6;
+    text-decoration: none;
+  }
+  
+  .footer p {
+    margin-top: 10px;
+  }
+  .success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: opacity 0.5s;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: opacity 0.5s;
+  }
+  
+  
